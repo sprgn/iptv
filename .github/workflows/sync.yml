@@ -10,6 +10,6 @@ jobs:
       contents: write
     steps:
       - name: Sync Fork
-        run: gh repo sync $GITHUB_REPOSITORY -b main
+        run: gh repo sync $GITHUB_REPOSITORY -b master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
