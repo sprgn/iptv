@@ -1,0 +1,15 @@
+name: Scheduled Upstream Sync
+on:
+  schedule:
+    - cron: '0 1 * * *' # Runs every day at 1 am
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Sync Fork
+        run: gh repo sync $GITHUB_REPOSITORY -b main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
